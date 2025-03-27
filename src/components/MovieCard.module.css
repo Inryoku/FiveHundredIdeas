@@ -1,0 +1,7 @@
+/* MovieCard.module.css */
+.card {
+  background-color: #222;
+  color: white;
+  padding: 1rem;
+  border-radius: 8px;
+}
