@@ -26,7 +26,7 @@ export const fetchMovies = createAsyncThunk(
   async (_, thunkAPI) => {
     try {
       const response = await fetch(
-        "http://www.omdbapi.com/?s=Batman&apikey=c51df3ee"
+        "https://www.omdbapi.com/?s=Batman&apikey=c51df3ee"
       );
       const data = await response.json();
       return data.Search;
