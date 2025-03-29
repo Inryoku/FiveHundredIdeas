@@ -1,35 +1,16 @@
-src/
+store             = 銀行全体
+slice             = 各窓口（口座種別）
+reducer           = 窓口用マニュアル（どう処理するか）
+dispatch          = 申請書（出金・入金などのリクエスト）
+state             = 現在の口座状況（全口座の残高）
+action            = 何円 or 何をどうしたいか（具体的な要望）
+selector          = 通帳記帳（現在の状態を読み出す）
 
-├── app/ ← Redux store（store.js）や Provider 設定
+persistReducer    = 銀行が潰れても金が残る仕組み（保存対応の窓口にする）
+persistConfig     = 保存マニュアル（どの窓口を保存するか指定。保存先は1つだけ）
 
-├── features/ ← ドメインごとの Redux slice & ロジック
-│ ├── movies/ ← 映画一覧・詳細
-│ ├── favorites/ ← お気に入り
-│ ├── watchlist/ ← 観たいリスト
-│ └── auth/ ← ログイン関連
-
-├── pages/ ← 各ページコンポーネント
-│ ├── Movies.jsx
-│ ├── MovieDetail.jsx
-│ ├── Favorites.jsx
-│ ├── Watchlist.jsx
-│ ├── Login.jsx
-│ └── NotFound.jsx
-
-├── components/ ← 小さめの UI パーツ（Card, Button など）
-│ ├── MovieCard.jsx
-│ ├── MovieCard.module.css
-│ ├── Button.jsx
-│ └── Button.module.css
-
-├── routes/ ← ルーティング設定 & ProtectedRoute
-│ └── ProtectedRoute.jsx
-
-├── utils/ ← API 呼び出しや共通関数
-│ ├── api.js
-│ └── formatDate.js
-
-├── styles/ ← 全体用の共通 CSS（例: リセット CSS など）
-│ └── global.css
-
-└── index.js ← アプリエントリーポイント
+combineReducers   = 窓口の集約（複数のreducerを1オブジェクトにまとめる）
+                  → なぜ必要？
+                  - persistReducerは1つのreducerしか受け取れない
+                  - configureStoreもreducerを1オブジェクトで受け取る
+                  → 結局なんやかんや combineReducers が必要になる
